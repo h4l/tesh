@@ -91,6 +91,7 @@ def get_expected_output(block: Block) -> str:
     """Massage expected output to be able to compare it."""
     expected_output = (
         "\n".join(block.output)
+        .replace("[", "[[]")
         .replace("*", "[*]")
         .replace("?", "[?]")
         .replace("...", "*")

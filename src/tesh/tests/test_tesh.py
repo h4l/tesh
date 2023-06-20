@@ -281,3 +281,22 @@ def test_prompt() -> None:
     # fmt: on
 
     assert expected == result.output
+
+
+def test_wildcards() -> None:
+    """Test using ... to ignore parts of the output."""
+    runner = CliRunner()
+    result = runner.invoke(tesh, "src/tesh/tests/fixtures/wildcards.md")
+
+    assert result.exit_code == 0
+
+    # fmt: off
+    expected = (
+"""
+📄 Checking src/tesh/tests/fixtures/wildcards.md
+  ✨ Running foo  ✅ Passed
+"""
+    ).lstrip("\n")
+    # fmt: on
+
+    assert expected == result.output
